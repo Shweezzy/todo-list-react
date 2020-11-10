@@ -1,18 +1,21 @@
 import React from 'react';
 
-import AppHeader from './components/app-header';
-import SearchPanel from './components/search-panel';
-import TodoList from './components/todo-list';
+import AppHeader from './components/app-header/';
+import SearchPanel from './components/search-panel/';
+import TodoList from './components/todo-list/';
+import ItemStatusFilter from './components/item-status-filter/';
 
-function App() {
+import './index.css';
+
+const App = () => {
 
     const todoData = [
         {
-            label: 'Drink cofee',
+            label: 'Drink Coffee',
             important: false,
             id: 1
         }, {
-            label: 'Make awesome app',
+            label: 'Make Awesome App',
             important: true,
             id: 2
         }, {
@@ -23,10 +26,14 @@ function App() {
     ];
 
     return (
-        <div className="App">
-            <AppHeader/>
-            <SearchPanel/>
-            <TodoList todos ={todoData}/>
+        <div className="todo-app">
+            <AppHeader toDo={1} done={3}/>
+            <div className="top-panel d-flex">
+                <SearchPanel/>
+                <ItemStatusFilter/>
+            </div>
+
+            <TodoList todos={todoData}/>
         </div>
     );
 };
