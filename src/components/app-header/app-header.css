@@ -4,9 +4,9 @@
 
 .app-header h1 {
     flex-grow: 1;
-}
-
-.app-header h2 {
-    font-size: 1.2rem;
-    color: grey;
+    color: #17A2B8;
+    font-family: 'Rouge Script', cursive;
+    font-size: 60px;
+    text-align: center;
+    text-shadow: 1px 1px 2px #082b34;
 }
