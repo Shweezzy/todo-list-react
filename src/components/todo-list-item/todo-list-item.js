@@ -3,25 +3,38 @@ import React, {Component} from 'react';
 import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
+    //class fields
+
+    state = {
+        done: false,
+        important: false
+    };
+
+    onLabelClick = () => {
+        this.setState({done: true});
+    };
+
+    isImportant = () => {
+        this.setState({important: true});
+        console.log('a')
+    };
 
     render() {
-        const {
-            label,
-            important = false
-        } = this.props;
+        const {label} = this.props;
+        const {done, important} = this.state;
 
-        const style = {
-            color: important
-                ? 'rgb(163, 42, 163)'
-                : 'black',
-            fontWeight: important
-                ? 'bold'
-                : 'normal'
-        };
+        let classNames = 'todo-list-item';
 
+        if (done) {
+            classNames += ' done'
+        }
+
+        if (important) {
+            classNames += ' important'
+        }
         return (
-            <span className="todo-list-item">
-                <span className="todo-list-item-label" style={style}>
+            <span className={classNames}>
+                <span className="todo-list-item-label" onClick={this.onLabelClick}>
                     {label}
                 </span>
 
@@ -29,7 +42,10 @@ export default class TodoListItem extends Component {
                     <i className="fa fa-trash-o"/>
                 </button>
 
-                <button type="button" className="btn btn-outline-success btn-sm float-right">
+                <button
+                    type="button"
+                    className="btn btn-outline-success btn-sm float-right"
+                    onClick={this.isImportant}>
                     <i className="fa fa-exclamation"/>
                 </button>
 
